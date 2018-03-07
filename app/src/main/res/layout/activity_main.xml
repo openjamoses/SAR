@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.denisfaith.mustsar.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        android:background="#dcfaf0">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:src="@drawable/aaa" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You are Ready to Register for your Class Attendance."
+            android:textAlignment="center"
+            android:textColor="#08afba"
+            android:textSize="23sp"
+            android:padding="2dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Click the SCAN button to scan the QR code on your Student ID or CANCEL button to Exit the Application"
+            android:textSize="16sp"
+            android:textColor="#41c6ce"
+            android:textAlignment="center"
+            android:padding="20dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SCAN"
+            android:padding="25dp"
+            android:id="@+id/scan_btn"
+            android:background="#c6f7cf"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="cancel"
+            android:padding="25dp"
+            android:id="@+id/cancel_btn"
+            android:background="#fdc58d"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
