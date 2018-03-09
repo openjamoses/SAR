@@ -1,4 +1,4 @@
-package com.example.denisfaith.mustsar;
+package com.example.denisfaith.mustsar.activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.denisfaith.mustsar.R;
 
 public class ResultActivity extends AppCompatActivity {
 

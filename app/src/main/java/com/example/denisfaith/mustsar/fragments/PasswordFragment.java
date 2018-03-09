@@ -1,4 +1,4 @@
-package com.example.denisfaith.mustsar;
+package com.example.denisfaith.mustsar.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,20 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.denisfaith.mustsar.R;
 
-public class ScanFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link PasswordFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link PasswordFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class PasswordFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private static final int REQUEST_SIGNUP = 0;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    public ScanFragment() {
+    public PasswordFragment() {
         // Required empty public constructor
     }
 
@@ -31,11 +41,11 @@ public class ScanFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ScanFragment.
+     * @return A new instance of fragment PasswordFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ScanFragment newInstance(String param1, String param2) {
-        ScanFragment fragment = new ScanFragment();
+    public static PasswordFragment newInstance(String param1, String param2) {
+        PasswordFragment fragment = new PasswordFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -55,7 +65,7 @@ public class ScanFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_scan, container, false);
+        return inflater.inflate(R.layout.fragment_password, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
