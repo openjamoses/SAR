@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.denisfaith.mustsar.R;
+import com.example.denisfaith.mustsar.db_operations.DBController;
+
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_PROGRAMS;
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_ROOM;
 
 /**
  * Created by john on 3/7/18.
@@ -42,6 +46,12 @@ public class PasswordActivity extends AppCompatActivity {
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        String sql_room = "SELECT * FROM room_tb";
+        String sql_program = "SELECT * FROM program_tb";
+        DBController.fetch(context,sql_room,OPERATION_ROOM);
+        DBController.fetch(context,sql_program,OPERATION_PROGRAMS);
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

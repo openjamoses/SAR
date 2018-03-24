@@ -1,9 +1,11 @@
 package com.example.denisfaith.mustsar.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -11,11 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.denisfaith.mustsar.R;
+import com.example.denisfaith.mustsar.db_operations.DBController;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_COURSES;
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_PROGRAMS;
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_ROOM;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -23,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button Scan_btn;
     private IntentIntegrator qRScan;
     private TextView ResultView;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        String sql_course = "SELECT * FROM course_tb";
+        DBController.fetch(context,sql_course,OPERATION_COURSES);
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -65,22 +77,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             else{
                 //..............if something in the QR code............................
                 try{
-                    //converting the data to json
-                    JSONObject obj = new JSONObject(result.getContents());
-                    //setting values to textviews
-
-                   ResultView.setText(obj.getString("Your Student ID information"));
-
-                }catch (JSONException e){
-                    e.printStackTrace();
-                    //.................if control comes here........................................
-                    //.......................that means the encoded format not matches
-                    //......in this case you can display whatever data is available on the qrcode
+                      //......in this case you can display whatever data is available on the qrcode
                     Intent nextActivity = new Intent(this, ResultActivity.class);
-                    nextActivity.putExtra("Your Student ID information ", (Parcelable) ResultView);
-                    nextActivity.putExtra("data",result.getContents());
+                   // nextActivity.putExtra("Your Student ID information ", (Parcelable) ResultView);
+                    nextActivity.putExtra("data",result.getContents().toString());
                     startActivity(nextActivity);
                     //Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
             }
 

@@ -9,6 +9,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.denisfaith.mustsar.R;
+import com.example.denisfaith.mustsar.db_operations.DBController;
+
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_CLASS;
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_COURSES;
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_PROGRAMS;
+import static com.example.denisfaith.mustsar.utils.Constants.config.OPERATION_ROOM;
 
 public class FirstActivity extends AppCompatActivity  {
     private Button std, lect;
@@ -36,6 +42,11 @@ public class FirstActivity extends AppCompatActivity  {
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        String sql_class = "SELECT * FROM class_tb";
+
+        DBController.fetch(context,sql_class,OPERATION_CLASS);
+
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -29,8 +29,8 @@ import static com.example.denisfaith.mustsar.utils.Constants.config.STUDENT_ID;
 import static com.example.denisfaith.mustsar.utils.Constants.config.STUDENT_LNAME;
 import static com.example.denisfaith.mustsar.utils.Constants.config.STUDENT_PASSWORD;
 import static com.example.denisfaith.mustsar.utils.Constants.config.STUDENT_PHOTO;
+import static com.example.denisfaith.mustsar.utils.Constants.config.STUDENT_REGNUMBER;
 import static com.example.denisfaith.mustsar.utils.Constants.config.STUDENT_SEMESTER;
-import static com.example.denisfaith.mustsar.utils.Constants.config.STUDENT_USERNAME;
 import static com.example.denisfaith.mustsar.utils.Constants.config.STUDENT_YEAR;
 
 public class SessionManager {
@@ -118,7 +118,7 @@ public class SessionManager {
          // commit changes
         editor.commit();
     }
-    public void loginStudent(int useID,int program_id, String fname, String lname, String photo,String year, String semester, String gender) {
+    public void loginStudent(int useID,int program_id, String fname, String lname, String photo,String year, String regno, String gender) {
         // Storing login value as TRUE
         if(isLoggedIn_staff() || isLoggedIn_student()){
             logoutUser();
@@ -129,9 +129,9 @@ public class SessionManager {
         editor.putString(STUDENT_YEAR, year);
         editor.putString(STUDENT_ID, String.valueOf(useID));
         editor.putString(PROGRAM_ID, String.valueOf(program_id));
-        editor.putString(STUDENT_SEMESTER, semester);
+        //editor.putString(STUDENT_SEMESTER, semester);
         editor.putString(STUDENT_GENDER, gender);
-        editor.putString(STUDENT_USERNAME, semester);
+        //editor.putString(STUDENT_REGNUMBER, semester);
         editor.putString(STUDENT_PASSWORD, gender);
         editor.putString(LOGIN_DATE, DateTime.getCurrentDate());
         editor.putString(LOGIN_TIME, DateTime.getCurrentTime());
@@ -169,7 +169,7 @@ public class SessionManager {
         user.put(STUDENT_SEMESTER, pref.getString(STUDENT_SEMESTER, null));
         user.put(STUDENT_GENDER, pref.getString(STUDENT_GENDER, null));
 
-        user.put(STUDENT_USERNAME, pref.getString(STUDENT_USERNAME, null));
+       // user.put(STUDENT_USERNAME, pref.getString(STUDENT_USERNAME, null));
         user.put(STUDENT_PASSWORD, pref.getString(STUDENT_PASSWORD, null));
         user.put(LOGIN_DATE, pref.getString(LOGIN_DATE, null));
         user.put(LOGIN_TIME, pref.getString(LOGIN_TIME, null));

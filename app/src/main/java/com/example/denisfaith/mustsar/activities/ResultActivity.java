@@ -1,6 +1,7 @@
 package com.example.denisfaith.mustsar.activities;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -21,6 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.denisfaith.mustsar.R;
+import com.example.denisfaith.mustsar.db_operations.Students;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -31,9 +33,8 @@ public class ResultActivity extends AppCompatActivity {
     public static final int CAMERA_REQUEST_CODE = 1;
     public static final int CAMERA_PERMISSION_REQUEST_CODE = 10;
     String name,gender,regno,info;
+    private Context context = this;
     private ListView listview;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +42,27 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         info=getIntent().getStringExtra("data");
-        int firstindexofcoma=info.indexOf(",");
-        name=info.substring(0,firstindexofcoma);
-        gender=info.substring(firstindexofcoma,info.lastIndexOf(","));
-        regno=info.substring(info.lastIndexOf(""));
-        String[] information={name,gender,regno};
+        String[] splits = info.split(", ");
 
-        listview=findViewById(R.id.list);
-        listview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,information));
+        name = splits[0];
+        try {
+            gender = splits[1];
+            regno = splits[2];
+            String[] information={name,gender,regno};
+
+            listview=findViewById(R.id.list);
+            listview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,information));
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            new Students(context).fetch(Students.regQuery(regno));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         image=findViewById(R.id.image_b);
         image.setOnClickListener(new View.OnClickListener() {
@@ -81,11 +95,6 @@ public class ResultActivity extends AppCompatActivity {
         Intent i=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(i,CAMERA_REQUEST_CODE);
     }
-
-    private void onClick() {
-
-
-    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST_CODE) {
@@ -103,4 +112,6 @@ public class ResultActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }

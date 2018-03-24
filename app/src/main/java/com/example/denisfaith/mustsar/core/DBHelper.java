@@ -8,10 +8,12 @@ import android.util.Log;
 
 import com.example.denisfaith.mustsar.utils.Constants;
 
+import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_CLASS;
 import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_COURSE;
 import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_DEPARTMENT;
 import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_DEP_STAFF;
 import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_FACULTY;
+import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_LCOURSE;
 import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_PCOURSE;
 import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_PROGRAM;
 import static com.example.denisfaith.mustsar.core.Create_Table.create.CREATE_REGISTRATION;
@@ -43,13 +45,15 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_STAFF);
         db.execSQL(CREATE_STUDENT);
         db.execSQL(CREATE_REGISTRATION);
-        db.execSQL(CREATE_COURSE);
         db.execSQL(CREATE_FACULTY);
         db.execSQL(CREATE_DEPARTMENT);
+        db.execSQL(CREATE_COURSE);
         db.execSQL(CREATE_ROOM);
         db.execSQL(CREATE_DEP_STAFF);
         db.execSQL(CREATE_PCOURSE);
+        db.execSQL(CREATE_LCOURSE);
         db.execSQL(CREATE_PROGRAM);
+        db.execSQL(CREATE_CLASS);
         db.execSQL(CREATE_RESPONSIBILY);
         Log.e("DATABASE OPERATION",Constants.config.TOTAL_TABLES+" Tables  created / open successfully");
     }
@@ -65,9 +69,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ Constants.config.TABLE_DEPARTMENT);
         db.execSQL("DROP TABLE IF EXISTS "+ Constants.config.TABLE_ROOM);
         db.execSQL("DROP TABLE IF EXISTS "+ Constants.config.TABLE_PCOURSE);
+        db.execSQL("DROP TABLE IF EXISTS "+ Constants.config.TABLE_LCOURSE);
         db.execSQL("DROP TABLE IF EXISTS "+ Constants.config.TABLE_RESPONSIBILITY);
         db.execSQL("DROP TABLE IF EXISTS "+ Constants.config.TABLE_DEP_STAFF);
         db.execSQL("DROP TABLE IF EXISTS "+ Constants.config.TABLE_PROGRAM);
+        db.execSQL("DROP TABLE IF EXISTS "+ Constants.config.TABLE_CLASS);
         onCreate(db);
         Log.e("DATABASE OPERATION", Constants.config.TOTAL_TABLES+" Table created / open successfully");
 
